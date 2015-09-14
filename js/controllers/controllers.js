@@ -123,15 +123,12 @@
         $scope.state.active=newMaga.active;
         window.magasProvider=window.magasProvider||magasProvider;//暴漏到root对象，ios和android调用
         function request(){
-            var backMaga=transformDataProvider(newMaga); 
-        console.log(newMaga)              
-        console.log(backMaga)              
+            var backMaga=transformDataProvider(newMaga);           
             $.ajax({
                 'url':'http://mookservice.5.cn/inner/magazine/addOne.json',
                 'type':"POST",
                 'data':{'params':JSON.stringify(backMaga)},
                 'success':function(data){
-                    console.log('rest success');
                 }
             });
         }
@@ -313,7 +310,6 @@
                                 $scope.shapes=$scope.shapes||[];
                                 // $scope.shapes.splice(index,0,data.obj);
                                 $scope.shapes[index]=data.obj;
-                                console.log(data.obj)
                                 $scope.current=index;
                             }
                         });
@@ -399,7 +395,6 @@
                     })},
                     'success':function(data){
                         if(data.code==200){
-                            console.log('wechat success');
                             window.location.hash='draftBox';
                         }
                     },
@@ -450,15 +445,12 @@
         $scope.state={};
         $scope.state.active=newMaga.active;
         $scope.rest=function(){
-            var backMaga=transformDataProvider($scope); 
-            console.log(newMaga)           
-            console.log(backMaga);           
+            var backMaga=transformDataProvider($scope);          
             $.ajax({
                 'url':'http://172.16.168.251:8080/magazine_interface/inner/magazine/addOne.json',
                 'type':"POST",
                 'data':{'params':JSON.stringify(backMaga)},
                 'success':function(data){
-                    console.log('rest success');
                 }
             });
         };
@@ -643,8 +635,6 @@
         //增加一个漂浮物
         $scope.addFloatage=function(){
             var maga=magasProvider.getNewMaga();
-            console.log(maga.pages.length,maga.active)
-            console.log(maga.pages[maga.active])
             maga.pages[maga.active].floatages.push({
                 effects:[],
                 style:{
